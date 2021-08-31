@@ -37,5 +37,21 @@ namespace MVCAPIDemo.Data
         {
             return _commanderContext.SaveChanges() > 0;
         }
+
+        public void UpdateCommand(Command command)
+        {
+           // We don't need to do anything. 
+        }
+
+        public void DeleteCommand(Command command)
+        {
+            if (command == null)
+            {
+                throw new ArgumentNullException(nameof(command));
+            }
+
+            _commanderContext.Commands.Remove(command);
+        }
+
     }
 }   

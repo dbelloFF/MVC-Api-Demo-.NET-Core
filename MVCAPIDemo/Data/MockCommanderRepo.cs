@@ -13,6 +13,11 @@ namespace MVCAPIDemo.Data
             throw new NotImplementedException();
         }
 
+        public void DeleteCommand(Command command)
+        {
+            throw new NotImplementedException();
+        }
+
         public IEnumerable<Command> GetAllCommands()
         {
             return new List<Command>
@@ -46,6 +51,11 @@ namespace MVCAPIDemo.Data
         }
 
         public bool SaveChanges()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateCommand(Command command)
         {
             throw new NotImplementedException();
         }

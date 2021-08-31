@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using MVCAPIDemo.Data;
+using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,13 +32,17 @@ namespace MVCAPIDemo
 
             services.AddDbContext<CommanderContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("CommanderConnection")));
 
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(
+                s => { s.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver(); }
+            );
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-            
-           // services.AddScoped<ICommanderRepository, MockCommanderRepo>();
+
+            // services.AddScoped<ICommanderRepository, MockCommanderRepo>();
 
             services.AddScoped<ICommanderRepository, SqlCommanderRepo>();
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

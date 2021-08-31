@@ -15,6 +15,8 @@ namespace MVCAPIDemo.Profiles
             // Source to Target
             CreateMap<Command, CommandReadDto>();
             CreateMap<CommandCreateDto, Command>();
+            CreateMap<CommandUpdateDto, Command>();
+            CreateMap<Command, CommandUpdateDto>();
         }
     }
 }
